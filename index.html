@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gender Equity</title>
+  <link rel="icon" type="image/x-icon" href="/favicon-32x32.png?v=2" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <script src="
+    https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
+    "></script>
+  <style>
+    ::selection {
+      color: #000000;
+      background: rgb(141, 217, 217);
+    }
+
+    html {
+      scroll-behavior: smooth;
+
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .reveal {
+      position: relative;
+      transform: translateY(150px);
+
+      opacity: 0;
+      transition: 1s all ease;
+
+    }
+
+    .reveal.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      width: 100%;
+      background-color: #000000;
+      background-image: url(/bg22.gif);
+      background-size: auto;
+      padding: 0;
+      margin: 0;
+      transition: all ease-in-out 1s;
+    }
+
+    .element {
+      transition: all ease-in-out 0.3s;
+    }
+
+    .element:hover {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      color: rgb(0, 0, 0) !important;
+      transition: all ease-in-out 0.3s;
+    }
+
+    .masthead {
+      height: 100vh;
+      min-height: 500px;
+      background-image: url("image.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all ease-in-out 0.5s;
+    }
+
+    .youtubeButton {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 150%;
+      left: -30%;
+      height: 150%;
+    }
+
+    .modal-content iframe {
+      margin: 0 auto;
+      display: block;
+      background: #000;
+    }
+
+    .modal-body {
+      background: #000;
+    }
+
+    .modal-header {
+      padding: 0;
+      border-bottom: none;
+      background: #000;
+      color: #000;
+    }
+
+    .modal-header .close {
+      margin-top: 10px;
+      margin-right: 2%;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+
+      .modal-header .close {
+        margin-right: 20%;
+      }
+
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.034) !important;
+      /* Give transparent white background to navbar */
+      /* 0.2 to give little whitish effect. */
+      /* Put 0 to get complete transperency */
+      z-index: 2;
+      backdrop-filter: blur(8px) saturate(125%);
+      /* Blur the background */
+      /* 10px Gaussian Blur and saturate for fluent design */
+      -webkit-backdrop-filter: blur(10px) saturate(125%);
+      /* Increases browser compability (safari ios and mac) */
+      overflow: hidden;
+      width: 100vw;
+    }
+
+    /* Add the rest of page in div with this class. Use this class accordingly. It is not necessary */
+    .main-content {
+      color: #fff;
+      margin-top: 60px;
+    }
+
+    /* Below code in only needed if you have dropdown in navbar and want to change its fore and back colors */
+    .navbar-nav>li>.dropdown-menu {
+      background-color: #000000;
+    }
+
+    .navbar-nav>li>.dropdown-menu>a {
+      color: white;
+    }
+
+    .blurr {
+      background: rgba(255, 255, 255, 0.265) !important;
+      /* Give transparent white background to navbar */
+      color: white;
+      /* 0.2 to give little whitish effect. */
+      /* Put 0 to get complete transperency */
+      z-index: 2;
+      backdrop-filter: blur(100px) saturate(125%);
+      /* Blur the background */
+      /* 10px Gaussian Blur and saturate for fluent design */
+      -webkit-backdrop-filter: blur(8px) saturate(125%);
+      /* Increases browser compability (safari ios and mac) */
+      overflow: hidden;
+    }
+
+    #cb-cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      /* border-radius: 0; */
+      border: 0;
+      display: block;
+      margin: auto;
+    }
+
+    #cookbtn {
+      background-color: #000;
+    }
+
+    #cookbtn:hover {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      color: rgb(0, 0, 0) !important;
+      transition: all ease-in-out 0.3s;
+    }
+  </style>
+</head>
+
+<body class="hero">
+  <div class="text-center">
+
+    <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0 blurr rounded-3" role="alert">
+      &#x1F36A; This website uses cookies to ensure you get the best experience on our website.
+      <a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
+      <button type="button" id="cookbtn" class="btn btn-primary btn-sm ms-3 rounded-3" onclick="hideme()">
+        I Got It
+      </button>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top bg-black lol">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active px-2 active">
+            <a class="lead nav-link text-black bg-white element rounded" href="#">Home</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="/moreinformation.html">More Information</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="/commonques.html">Common Questions</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element"
+              href="https://unitedwaynca.org/blog/what-is-gender-equity/">Other Sources</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ">
+          <!-- <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="#">Login</a>
+          </li> -->
+          <li class="nav-item px-2 justify-content-between">
+            <a class="lead nav-link text-white element border border-white rounded" href="/registerpage.html">Register
+              For Newsletter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Full Page Image Header with Vertically Centered Content -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-medium text-white auto-type"></h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <section class="py-5">
+    <div class="container reveal tranformer">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-6 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            What is Gender Equity?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Gender equity refers to the principle of fairness and justice in
+            relation to the treatment and opportunities available to
+            individuals of different genders. It involves ensuring that all
+            individuals, regardless of their gender, have equal access to
+            resources, rights, and opportunities.<br><i class="lead my-3 text-wrap text-justify text-white">Click The
+              Image on the side to see
+              video related to this topic -></i>
+          </p>
+        </div>
+        <div class="col-lg-5 px-0">
+          <a href="#myModal" data-bs-toggle="modal" data-bs-target="#myModal">
+            <img class="img-fluid rounded mx-auto d-block"
+              src="/different-equal-diversity-word-hands-up-design-people-multiethnic-race-community-theme_25030-51074.png"
+              alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container reveal tranformer1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-5 px-0">
+          <a href="#myModal1" data-bs-toggle="modal" data-bs-target="#myModal1">
+            <img class="img-fluid rounded mx-auto d-block"
+              src="https://t4.ftcdn.net/jpg/05/00/25/29/360_F_500252913_qEvfQuzlEzHUns2ZsbY13sdm9rzEV8jY.webp" alt="" />
+          </a>
+        </div>
+        <div class="col-lg-6 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            Difference between Gender Equity and Gender Equality
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            While gender equity and gender equality share similar goals, there
+            is a distinction between the two. Gender equity focuses on
+            addressing the specific needs and challenges faced by different
+            genders, taking into account the historical and social context of
+            inequalities. It recognizes that individuals may require different
+            support systems or interventions to achieve equality. Gender
+            equality, on the other hand, aims for equal rights, opportunities,
+            and treatment for people of all genders without necessarily
+            considering their different starting points or circumstances.
+            <br><i class="lead my-3 text-wrap text-justify text-white"> <- Click The Image on the side to see video
+                related to this topic</i>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div class="container text-white">
+    <hr />
+  </div>
+  <section class="py-5">
+    <div class="container reveal tranformer">
+      <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-10 px-0 mx-auto">
+          <p class="fw-normal fs-5 my-3 text-wrap text-justify fst-italic lh-lg text-white">
+            "Imagine a world where opportunities flow freely, unimpeded by
+            gender. A world where every voice is heard, every talent is
+            recognized, and every dream is within reach. Gender equity is the
+            key that unlocks this vision, a powerful force that dismantles
+            barriers, empowers individuals, and paves the way for a brighter,
+            more inclusive future. It's time to come together, embrace
+            diversity, and champion equality. Let's create a world where
+            gender ceases to be a limitation, and instead becomes a
+            celebration of the unique strengths and contributions of every
+            individual."
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container text-white">
+    <hr />
+  </div>
+  <section class="py-5">
+    <div class="container text-body-emphasis reveal tranformer1">
+      <div class="col-lg-10 px-0 mx-auto">
+        <h1 class="display-5 fw-medium text-justify text-white">
+          Key aspects of gender equity include:
+        </h1>
+      </div>
+      <br />
+
+      <div class="col-lg-5 px-0 mx-auto">
+        <a href="#myModal2" data-bs-toggle="modal" data-bs-target="#myModal2">
+          <img class="img-fluid rounded mx-auto d-block" src="gender-inequality-with-wooden-blocks.png" alt="" />
+        </a>
+      </div>
+      <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-10 px-0 mx-auto">
+          <ol>
+            <li>
+              <p class="lead my-3 text-wrap text-justify text-white">
+                Gender equity emphasizes the importance of empowering
+                individuals to participate fully in social, economic, and
+                political life. It involves providing platforms and support
+                systems for marginalized genders to express their voices,
+                contribute to decision-making processes, and actively shape
+                policies that affect their lives.
+              </p>
+            </li>
+            <li>
+              <p class="lead my-3 text-wrap text-justify text-white">
+                Closing the gender pay gap is also a significant aspect of
+                gender equity. It calls for equal pay for equal work, ensuring
+                that individuals receive fair compensation based on their
+                skills, qualifications, and performance rather than their
+                gender. Achieving pay equity requires addressing systemic
+                biases and implementing policies that promote transparency and
+                fairness in compensation.
+                <br><i class="lead my-3 text-wrap text-justify text-white">Click The Image on top to see
+                  video related to this topic ^</i>
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <div class="container">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+      <p class="text-white">❤️ Made By Omkar More</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.instagram.com/"><img class="bi" width="24" height="24"
+              src="/instagram.png" alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://twitter.com/i/flow/login?redirect_after_login=%2F"><img class="bi"
+              width="24" height="24" src="/twitter.png" alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.facebook.com/"><img class="bi" width="24" height="24"
+              src="/facebook.png" alt="" /></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button type="button" class="btn btn-blue btn-floating btn-lg" id="btn-back-to-top">
+    ⬆️
+  </button>
+
+  <!-- Modal HTML -->
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-black">
+          <h4 class="modal-title text-white p-3 mx-auto">YouTube Video</h4>
+          <button type="button" class="btn-close btn-close-white mx-auto" data-bs-dismiss="modal"
+            aria-hidden="true"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="hidden-xs" id="youtubeVideo" width="85%" height="400px"
+            src="https://www.youtube.com/embed/ckfEleXnKWQ?si=VGRtvHTdydFWjHxr" frameborder="0" allowfullscreen
+            SECURE_REFERRER_POLICY="no-referrer-when-downgrade"></iframe>
+          <div class="container text-center">
+
+            <a class="lead link-light" href="https://youtu.be/ckfEleXnKWQ?si=VGRtvHTdydFWjHxr">Link For The Above
+              Video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal1" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-black">
+          <h4 class="modal-title text-white p-3 mx-auto">YouTube Video</h4>
+          <button type="button" class="btn-close btn-close-white mx-auto" data-bs-dismiss="modal"
+            aria-hidden="true"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="hidden-xs" id="youtubeVideo" width="85%" height="400px"
+            src="https://www.youtube.com/embed/MlXZyNtaoDM?si=Ikchw6PFRlAQsMF8" frameborder="0" allowfullscreen
+            SECURE_REFERRER_POLICY="no-referrer-when-downgrade"></iframe>
+          <div class="container text-center">
+
+            <a class="lead link-light" href="https://youtu.be/MlXZyNtaoDM?si=pvravWejVBtyo9XV">Link For The Above
+              Video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal2" class="modal fade">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h4 class="modal-title text-white p-3 mx-auto">YouTube Video</h4>
+          <button type="button" class="btn-close btn-close-white mx-auto" data-bs-dismiss="modal"
+            aria-hidden="true"></button>
+        </div>
+        <div class="modal-body">
+          <iframe class="hidden-xs" id="youtubeVideo" width="85%" height="400px"
+            src="https://www.youtube.com/embed/-hc0kZh6CnM?si=Q38aTlJHgpxcVY9e" frameborder="0" allowfullscreen
+            SECURE_REFERRER_POLICY="no-referrer-when-downgrade"></iframe>
+          <div class="container text-center">
+
+            <a class="lead link-light" href="https://youtu.be/-hc0kZh6CnM?si=wOz0rF3Qkl2EhcIO">Link For The Above
+              Video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed(".auto-type", {
+      strings: [
+        "Together we rise, dismantling gender disparities and embracing equity",
+        "Gender equity: Empowering minds, inspiring change, creating a brighter tomorrow",
+        "Gender equity: Igniting potential, unleashing greatness in every individual.",
+      ],
+      typeSpeed: 60,
+      backSpeed: 30,
+      loop: true,
+    });
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 30;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", reveal);
+    //Get the button
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    function backToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    const images = ["image.png", "image1.png", "image2.png", "image3.png"];
+    var imageEl = document.getElementsByClassName("masthead")[0];
+    window.setInterval(changePicture, 1000);
+    let i = 0;
+    function changePicture() {
+      i++;
+      if (i > images.length - 1) i = 0;
+      imageEl.style.backgroundImage = `url(${images[i]})`;
+    }
+
+    function changeCss() {
+      document.body.style.backgroundImage =
+        this.scrollY > 1600 ? "url(bg22.gif)" : "url(bg21.gif)";
+    }
+
+    window.addEventListener("scroll", changeCss, false);
+
+    $(document).ready(function () {
+      var url = $("#youtubeVideo").attr('src');
+
+      $("#youtubeVideo").attr('src', '');
+      $("#myModal").on('shown.bs.modal', function () {
+        $("#youtubeVideo").attr('src', url);
+      });
+      $("#myModal").on('hide.bs.modal', function () {
+        $("#youtubeVideo").attr('src', '');
+      });
+    });
+
+    function hideme() {
+      document.getElementById("cb-cookie-banner").style.display = "none";
+      Cookies.set('Personalize', 'true');
+      console.log("Cookie Created :)");
+    }
+
+  </script>
+  </script>
+
+</body>
+
+</html>

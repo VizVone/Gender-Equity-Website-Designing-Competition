@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QnA</title>
+  <link rel="icon" type="image/x-icon" href="/favicon-32x32.png?v=2">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .masthead {
+      height: 60vh;
+      min-height: 500px;
+      background-image: url("/news-gep1_1280x660.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .reveal {
+      position: relative;
+      transform: translateY(150px);
+      opacity: 0;
+      transition: 1s all ease;
+    }
+
+    .reveal.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+      .transformee1 {
+        position: relative;
+        /* transform: translateX(calc(100vh-320px)); */
+        transform: translateX(-100vw) translateX(20px);
+        opacity: 0;
+        transition: 1s all ease;
+      }
+
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      width: 100%;
+      background-color: #000;
+      background-image: url(/bg22.gif);
+      background-repeat: repeat;
+      background-size: auto;
+      transition: all ease-in-out 1s;
+      padding: 0;
+      margin: 0;
+    }
+
+    .element {
+      transition: all ease-in-out 0.3s;
+    }
+
+    .element:hover {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      color: rgb(0, 0, 0) !important;
+      transition: all ease-in-out 0.3s;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.034) !important;
+      /* Give transparent white background to navbar */
+      /* 0.2 to give little whitish effect. */
+      /* Put 0 to get complete transperency */
+      z-index: 2;
+      backdrop-filter: blur(10px) saturate(125%);
+      /* Blur the background */
+      /* 10px Gaussian Blur and saturate for fluent design */
+      -webkit-backdrop-filter: blur(8px) saturate(125%);
+      /* Increases browser compability (safari ios and mac) */
+      overflow: hidden;
+    }
+
+    /* Add the rest of page in div with this class. Use this class accordingly. It is not necessary */
+    .main-content {
+      color: #fff;
+      margin-top: 60px;
+    }
+
+    /* Below code in only needed if you have dropdown in navbar and want to change its fore and back colors */
+    .navbar-nav>li>.dropdown-menu {
+      background-color: #000000;
+    }
+
+    .navbar-nav>li>.dropdown-menu>a {
+      color: white;
+    }
+
+    .carousel-inner .item {
+      opacity: 0;
+      transition: none;
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    .carousel-inner .active {
+      transition: all 1s ease-in-out;
+      opacity: 1;
+    }
+
+  </style>
+</head>
+
+<body class="hero">
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top bg-black">
+    <div class="container">
+      <!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto mx-auto">
+          <li class="nav-item px-2  active">
+            <a class="lead nav-link text-white element" href="/index.html">Home</a>
+          </li>
+          <li class="nav-item px-2 ">
+            <a class="lead nav-link text-white element" href="/moreinformation.html">More Information</a>
+          </li>
+          <li class="nav-item px-2 bg-white rounded-2">
+            <a class="lead nav-link text-black element" href="#">Common Questions</a>
+          </li>
+          <li class="nav-item px-2 ">
+            <a class="lead nav-link text-white element"
+              href="https://unitedwaynca.org/blog/what-is-gender-equity/">Other
+              Sources</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ">
+          <!-- <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="#">Login</a>
+          </li> -->
+          <li class="nav-item px-2 justify-content-between">
+            <a class="lead nav-link text-white element border border-white rounded" href="/registerpage.html">Register
+              For Newsletter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Full Page Image Header with Vertically Centered Content -->
+  <header class="masthead">
+    <div class="container h-100 ">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold text-white">
+            Common Questions And Answers
+          </h1>
+          <!-- <p class="lead text-white">A great starter layout for a landing page</p> -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <section class="py-5">
+    <div class="container reveal transformee1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis ">
+        <div class="col-lg-8 px-0 mx-auto tranformer">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            What is the difference between gender equity and gender equality?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Gender equity and gender equality are related concepts but have
+            distinct meanings. Gender equality refers to the equal treatment
+            and rights of all genders, without any discrimination or bias. It
+            emphasizes the goal of providing equal opportunities, resources,
+            and outcomes for individuals of different genders. On the other
+            hand, gender equity recognizes that equality may not be achieved
+            by treating everyone the same, as different genders may have
+            different needs and experiences. It focuses on addressing
+            historical and social imbalances by providing targeted support and
+            resources to marginalized or disadvantaged genders to ensure
+            fairness and justice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container text-white">
+    <hr />
+  </div>
+
+  <section class="py-5">
+    <div class="container reveal transformee1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-8 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            Why is gender equity important?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Gender equity is important because it recognizes and addresses the
+            systemic discrimination and inequalities that exist based on
+            gender. It seeks to create a more inclusive and fair society where
+            all individuals, regardless of their gender, have equal access to
+            opportunities, resources, and rights. By promoting gender equity,
+            we can break down barriers, challenge stereotypes, and create a
+            more just and sustainable world for everyone. It benefits not only
+            individuals but also communities and societies as a whole by
+            harnessing the talents, perspectives, and contributions of all
+            genders.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container text-white">
+    <hr />
+  </div>
+
+  <section class="py-5">
+    <div class="container reveal transformee1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-8 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            How does gender equity impact economic development?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Gender equity plays a crucial role in economic development. When
+            all genders have equal access to education, employment
+            opportunities, and economic resources, it fosters economic growth
+            and productivity. Gender equity in the workforce leads to greater
+            diversity, which has been shown to enhance creativity, innovation,
+            and problem-solving. It also reduces gender-based wage gaps,
+            contributing to increased household income and economic stability.
+            Furthermore, gender-equitable policies, such as affordable
+            childcare and flexible work arrangements, support work-life
+            balance and enable greater participation of women in the labor
+            force, leading to increased productivity and economic output.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container text-white">
+    <hr />
+  </div>
+
+  <section class="py-5">
+    <div class="container reveal transformee1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-8 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            What are some challenges in achieving gender equity?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Achieving gender equity can be challenging due to several factors.
+            Deep-rooted gender norms and stereotypes, societal attitudes, and
+            cultural practices can perpetuate inequality and discrimination.
+            Unequal distribution of caregiving responsibilities and
+            traditional gender roles can limit opportunities for women in the
+            workforce. Discrimination and biases in hiring and promotion
+            processes can hinder progress. Additionally, lack of access to
+            education, healthcare, and resources can further marginalize
+            certain genders. Overcoming these challenges requires systemic
+            changes, policy reforms, awareness raising, and continuous efforts
+            to challenge and transform gender norms and practices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container text-white">
+    <hr />
+  </div>
+
+  <section class="py-5"> 
+    <div class="container reveal transformee1">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-8 px-0 mx-auto">
+          <h1 class="display-5 fw-medium text-justify text-white">
+            How can individuals contribute to promoting gender equity?
+          </h1>
+          <p class="lead my-3 text-wrap text-justify text-white">
+            Individuals can contribute to promoting gender equity in various ways:
+            <br><br>
+            Educate oneself: Learn about gender issues, gender biases, and the experiences of marginalized genders to
+            develop a deeper understanding.
+            <br><br>
+            Challenge stereotypes: Question and challenge traditional gender roles and stereotypes in everyday
+            conversations and behaviors.
+            Support gender-inclusive policies: Advocate for policies and practices that promote gender equity in
+            workplaces, schools, and communities.
+            <br><br>
+            Promote equal opportunities: Encourage and support equal opportunities for all genders, whether in
+            education, employment, or leadership positions.
+            <br><br>
+            Be an ally: Stand up against gender-based discrimination and support individuals who face prejudice or bias.
+            Engage in dialogue: Have open and respectful conversations about gender equity, share experiences, and
+            promote awareness.
+            Support organizations: Contribute time, resources, or skills to organizations working towards gender equity
+            and supporting marginalized genders.
+            <br><br>
+            By taking individual actions and collectively working towards gender equity, we can make a positive impact
+            and contribute to a more equitable and inclusive society.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <div class="container">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+      <p class="text-white">❤️ Made By Omkar More</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.instagram.com/"><img class="bi" width="24" height="24" src="/instagram.png"
+              alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://twitter.com/i/flow/login?redirect_after_login=%2F"><img class="bi" width="24" height="24" src="/twitter.png" alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.facebook.com/"><img class="bi" width="24" height="24" src="/facebook.png"
+              alt="" /></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button type="button" class="btn btn-blue btn-floating btn-lg" id="btn-back-to-top">
+    ⬆️
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    function changeCss() {
+      document.body.style.backgroundImage =
+        this.scrollY > 1600 ? "url(bg21.gif)" : "url(bg22.gif)";
+    }
+    window.addEventListener("scroll", changeCss, false);
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 30;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", reveal);
+    //Get the button
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    
+
+  </script>
+</body>
+
+</html>

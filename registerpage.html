@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gender Equity</title>
+  <link rel="icon" type="image/x-icon" href="/favicon-32x32.png?v=2" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .reveal {
+      position: relative;
+      transform: translateY(150px);
+      opacity: 0;
+      transition: 1s all ease;
+    }
+
+    .reveal.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      width: 100%;
+      background-color: #000000;
+      background-image: url(wp2757875-wallpaper-gif.gif);
+      background-size: cover;
+      padding: 0;
+      margin: 0;
+      transition: all ease-in-out 0.5s;
+    }
+
+    .element {
+      transition: all ease-in-out 0.3s;
+    }
+
+    .element:hover {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      color: rgb(0, 0, 0) !important;
+      transition: all ease-in-out 0.3s;
+    }
+
+    .masthead {
+      height: 20vh;
+      min-height: 500px;
+      /* background-image: url("/Newsletter-Background.png"); */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all ease-in-out 0.5s;
+    }
+    .navbar {
+      background: rgba(255, 255, 255, 0.034) !important;  /* Give transparent white background to navbar */
+                                                   /* 0.2 to give little whitish effect. */
+                                                   /* Put 0 to get complete transperency */
+    z-index: 2;
+    backdrop-filter: blur(10px) saturate(125%);                   /* Blur the background */
+                                                                  /* 10px Gaussian Blur and saturate for fluent design */
+    -webkit-backdrop-filter: blur(8px) saturate(125%);           /* Increases browser compability (safari ios and mac) */
+    overflow: hidden;
+}
+
+/* Add the rest of page in div with this class. Use this class accordingly. It is not necessary */
+.main-content {
+    color: #fff;
+    margin-top: 60px;
+}
+/* Below code in only needed if you have dropdown in navbar and want to change its fore and back colors */
+.navbar-nav > li > .dropdown-menu { 
+    background-color: #000000; 
+}
+
+.navbar-nav > li > .dropdown-menu > a{ 
+    color: white;
+}
+
+  .blurr{
+    background: rgba(255, 255, 255, 0.034) !important;  /* Give transparent white background to navbar */
+    color: white;                                             /* 0.2 to give little whitish effect. */
+                                                   /* Put 0 to get complete transperency */
+    z-index: 2;
+    backdrop-filter: blur(100px) saturate(125%);                   /* Blur the background */
+                                                                  /* 10px Gaussian Blur and saturate for fluent design */
+    -webkit-backdrop-filter: blur(8px) saturate(125%);           /* Increases browser compability (safari ios and mac) */
+    overflow: hidden;
+  }
+  #submitSomethin:hover{
+    background-color: rgb(88, 137, 228) !important;
+  }
+  </style>
+</head>
+
+<body class="hero">
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top bg-black lol">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active px-2 active">
+            <a class="lead nav-link text-white element" href="/index.html">Home</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="/moreinformation.html">More Information</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="/commonques.html">Common Questions</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="lead nav-link text-white element"
+              href="https://unitedwaynca.org/blog/what-is-gender-equity/">Other Sources</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ">
+          <!-- <li class="nav-item px-2">
+            <a class="lead nav-link text-white element" href="#">Login</a>
+          </li> -->
+          <li class="nav-item px-2 justify-content-between">
+            <a class="lead nav-link text-black element bg-white border border-white rounded" href="/moreinformation.html">Register For Newsletter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Full Page Image Header with Vertically Centered Content -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+          <h1 class="display-1 fw-medium text-white text-left"> Newsletter</h1>
+          <h1 id="updatetop" class="display-5 fw-medium text-white"> Sign Up For Weekly Updates</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <section class="py-2">
+    <div class="container">
+      <div class="row p-4 p-md-2 mb-4 rounded text-body-emphasis">
+        <div class="col-lg-6 px-0 mx-auto">
+            <form method="POST" action="https://api.sheetmonkey.io/form/cX24QpdkNEDUmkyfmytpVM" onsubmit="alertBox()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label  class="form-label text-white" for="form3Example1" >First name</label>
+                      <input type="text" id="firstname" class="form-control bg-dark text-white" name="Name" required/>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label text-white" for="form3Example2">Last name</label>
+                      <input type="text" id="lastname" class="form-control bg-dark text-white" name="lastName" required/>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="form-outline mb-4">
+                  <label class="form-label text-white" for="form3Example4">NickName</label>
+                  <input type="text" id="nickname" class="form-control bg-dark text-white" name="nickName" required/>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label text-white" for="form3Example3">Email address</label>
+                  <input type="email" id="email" class="form-control bg-dark text-white"  name="Email" required/>
+                </div>
+              
+
+                
+
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="1" id="form2Example33" id="checkme"/>
+                  <label class="form-check-label text-white" for="form2Example33">
+                    For Monthly Newsletter Only
+                  </label>
+                  <div class="invalid-feedback">
+                    You must agree before submitting.
+                  </div>
+                </div>
+              
+                <!-- Submit button -->
+                <div class="text-center"> 
+                  <button id="submitSomethin" type="submit" value="Submit" class="btn btn-primary btn-block mb-4 blurr ">Sign up</button>
+                </div>
+                
+                <div class="d-none" id="alerto" role="alert">
+                   <p class="mx-auto"><strong>Successful!</strong> Thanks For Signing Up <span id="flname"></span></p>
+                   
+                   <!-- <p class="mx-auto">(Refresh the page for new entry)</p> -->
+                </div>
+              
+                <!-- Register buttons -->
+                <div class="text-center text-white">
+                  <p>or sign up with:</p>
+                  <button type="button" class="btn btn-secondary btn-floating mx-1 blurr">
+                    <a class="link-body-emphasis" href="https://www.instagram.com/"><img class="bi" width="24" height="24"
+                      src="/instagram.png" alt="" /></a>
+                  </button>
+              
+                  <button type="button" class="btn btn-secondary btn-floating mx-1 blurr">
+                    <a class="link-body-emphasis" href="https://twitter.com/i/flow/login?redirect_after_login=%2F"><img class="bi"
+                      width="24" height="24" src="/twitter.png" alt="" /></a>
+                  </button>
+              
+                  <!-- <button type="button" class="btn btn-secondary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button> -->
+              
+                  <button type="button" class="btn btn-secondary btn-floating mx-1 blurr">
+                    <a class="link-body-emphasis" href="https://www.facebook.com/"><img class="bi" width="24" height="24"
+                      src="/facebook.png" alt="" /></a>
+                  </button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <div class="container">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top">
+      <p class="text-white">❤️ Made By Omkar More</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.instagram.com/"><img class="bi" width="24" height="24"
+              src="/instagram.png" alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://twitter.com/i/flow/login?redirect_after_login=%2F"><img class="bi"
+              width="24" height="24" src="/twitter.png" alt="" /></a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.facebook.com/"><img class="bi" width="24" height="24"
+              src="/facebook.png" alt="" /></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button type="button" class="btn btn-blue btn-floating btn-lg" id="btn-back-to-top">
+    ⬆️
+  </button>
+     
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    // var typed = new Typed(".auto-type", {
+    //   strings: [
+    //     "Together we rise, dismantling gender disparities and embracing equity",
+    //     "Gender equity: Empowering minds, inspiring change, creating a brighter tomorrow",
+    //     "Gender equity: Igniting potential, unleashing greatness in every individual.",
+    //   ],
+    //   typeSpeed: 60,
+    //   backSpeed: 30,
+    //   loop: true,
+    // });
+    // function reveal() {
+    //   var reveals = document.querySelectorAll(".reveal");
+
+    //   for (var i = 0; i < reveals.length; i++) {
+    //     var windowHeight = window.innerHeight;
+    //     var elementTop = reveals[i].getBoundingClientRect().top;
+    //     var elementVisible = 30;
+
+    //     if (elementTop < windowHeight - elementVisible) {
+    //       reveals[i].classList.add("active");
+    //     } else {
+    //       reveals[i].classList.remove("active");
+    //     }
+    //   }
+    // }
+
+    window.addEventListener("scroll", reveal);
+    //Get the button
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    function backToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    function alertBox() {
+    document.getElementById("alerto").classList = "alert alert-success d-flex align-items-center mx-auto blurr ";
+    var firstName = document.getElementById("firstname").value;
+    var lastName = document.getElementById("lastname").value;
+    document.getElementById("flname").innerText = firstName + " " + lastName;
+    document.getElementById("updatetop").innerHTML = "Thanks For Signing Up ❤️";
+    console.log("Form Submitted");
+    firstName="";
+    lastName="";
+}
+  </script>
+</body>
+
+</html>
